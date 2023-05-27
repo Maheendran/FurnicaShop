@@ -1,0 +1,81 @@
+
+
+<%- include('../htmlbody/Adminheader') -%>
+                    <div class="row">
+                      <div class="col-12 grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4 class="card-title">Product list</h4>
+                        
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>IMAGE</th>
+                                    <th>NAME</th>
+                                    <th>PRICE</th>
+                                    <th>DESCRIPTION </th>
+                                    <th>STOCK</th>
+                                    <th>CATEGORY</th>
+                                    <th>ACTION</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <%if(products.length>0)  {%>
+                                    <%for(let i=0;i <products.length; i++){%>
+                                  
+                                  <tr>
+                                    <td><%= [i+1] %></td>
+                                    <td>
+                                    <img src="<%= products[i].imageUrl[0]  %>" alt="">
+                                    </td>
+                                    <td><span ><%= products[i].name %></span></td>
+            
+                                        <td>
+                                            <span><%= products[i].price %></span><br>
+                                           
+                                        </td>
+                                     
+                                   
+                                      <td >
+                                          <span ><%= products[i].description %></span><br>
+                                          
+                                      </td>
+                                      <td>
+                                        <span ><%= products[i].stock %></span><br>
+                                        
+                                    </td>
+                                      <td>
+                                        <span ><%= products[i].category.category %></span><br>
+                                        
+                                    </td>
+                                     <td> <a href="/admin/updateproduct/<%= locals.products[i]._id  %>" >
+                                                <button data-bs-toggle="modal" data-bs-target="#unblockBut" class="btn badge badge-success rounded-pill">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </button></a>
+                                        
+            
+                                                <a href="/admin/deleteProduct/<%= locals.products[i]._id  %>" >
+                                                <button data-bs-toggle="modal" data-bs-target="#unblockBut" class="btn badge badge-danger  rounded-pill ">
+                                                  <i class="fa-solid fa-trash"></i>
+                                                </button></a>
+                                    </td>
+                                  </tr>
+                                  <% } %>
+                                    
+                                    <%}else{%>
+                                        <tr>
+                                            <td colspan="5">products note found</td>
+                        
+                                        </tr>
+                                       <% } %>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <%- include('../htmlbody/AdminFooter') -%>
+

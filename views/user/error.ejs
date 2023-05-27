@@ -1,0 +1,23 @@
+<%- include('../htmlbody/header') -%> <%- include('../htmlbody/navbar') -%>
+
+<div class="conatiner mt-3">
+  <div class="col-5 m-auto">
+    <img class="img-fluid" src="/assests/warning.gif" alt="" />
+  
+    </div>
+    <div class="col-12 text-center">
+      <div class="row">
+          <h3 style="color: rgb(226, 82, 82)"> <%= locals.error  %></h3>
+      </div>
+    <div class="row">
+      <p>Please try again later.</p>
+    </div>
+    <div class="row text-center ">
+      <button class="btn" onclick="window.location.href='/'">
+         Go to Homepage
+       </button>
+    </div>
+  </div>
+</div>
+
+<%- include('../htmlbody/footer') -%>
