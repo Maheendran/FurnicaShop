@@ -151,7 +151,6 @@ const orderConfirm = async (req, res) => {
         await updatedUser.save();
       }
     }
-
     res.json('success');
   } catch (error) {
     errorHandler(error, req, res);

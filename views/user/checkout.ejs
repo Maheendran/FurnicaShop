@@ -498,9 +498,7 @@ const walletBalanceAmount=document.getElementById("walletBalanceAmount")
 paymentbtn.forEach(btn => {
      btn.addEventListener('change', () => {
      paymentvalue = document.querySelector('input[name="payment"]:checked').value;
-  
    popup_payment.innerHTML=paymentvalue
-
 pay=true
    if("Wallet"==paymentvalue){
     if(walletamount.innerHTML>=lastprice){
@@ -556,7 +554,6 @@ const checkbtn=()=>{
 }
 
 const handleorder=async()=>{
-
 await fetch('/checkStock', {
  method: 'GET',
  headers: {
@@ -625,16 +622,19 @@ let orderData=await response.json()
   "amount": subtotal*100,
   "currency": "INR",
   "order_id": orderData.id,
- 
+  handler: function (response) {
+      // Handle payment success
+      handleOrders(subtotal);
+    },
 };
+
 var rzp1 = new Razorpay(options);
 
-  rzp1.open();
-setTimeout(()=>{
-  if(orderData.success===true){
-  handleOrders(subtotal)
-}
-},15000)
+
+
+
+rzp1.open();
+
  
 
 }

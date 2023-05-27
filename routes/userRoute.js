@@ -72,7 +72,8 @@ userRoute.get('/wishlistToCart/:id/:index', loggedin, cartController.wishlistToC
 // ===============user profile===============//
 userRoute.get('/profile', loggedin, profileController.profile);
 userRoute.post('/updatedprofile/:id', loggedin, profileController.updatedprofile);
-//= ============== address===============//
+
+//= ============== address ===============//
 userRoute.post('/createAddress', loggedin, profileController.createAddress);
 userRoute.post('/removeAddress', loggedin, profileController.removeAddress);
 userRoute.get('/updateAddress/:id', loggedin, profileController.updateAddress);
