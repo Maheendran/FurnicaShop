@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 
 const errorHandler = require('./errorHandler.js');
+const User = require('../models/userModel.js');
 
 const isLogin = async (req, res, next) => {
   try {
@@ -18,6 +19,11 @@ const isLogin = async (req, res, next) => {
 const loggedin = async (req, res, next) => {
   try {
     if (req.session.user) {
+      const userId = req.session.user;
+      const user = await User.findById(userId);
+      if (user.isBlocked) {
+        res.redirect('/logout');
+      }
       next();
     } else {
       res.redirect('/login');

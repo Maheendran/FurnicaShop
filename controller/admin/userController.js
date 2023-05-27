@@ -62,7 +62,7 @@ const blockUser = async (req, res) => {
       { $set: { isBlocked: !isBlocked } },
       { new: true },
     );
-    req.session.user = null;
+    // req.session.user = null;
     res.redirect('/admin/users');
   } catch (error) {
     errorHandler(error, req, res);
